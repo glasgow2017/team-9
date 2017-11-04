@@ -8,7 +8,7 @@ import {
 // Screens:
 import Home from '../containers/Home';
 import About from '../containers/About';
-
+import Login from '../containers/Login';
 
 /*
   Entry point of the app
@@ -22,6 +22,7 @@ export default class Router extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
+          <Route path="/login" component={Login} />
         </Switch>
       </BrowserRouter>
     );
