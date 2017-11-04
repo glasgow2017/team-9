@@ -1,4 +1,10 @@
 <?php
+
+
+require 'vendor/autoload.php';
+use \Firebase\JWT\JWT;
+
+
 require_once 'DB.php';
 $account = json_decode(file_get_contents('php://input'));
 

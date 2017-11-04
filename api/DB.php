@@ -1,11 +1,10 @@
 <?php
-        $host = 'localhost';
-        //devweb2017.cis.strath.ac.uk
+        $host = 'jp_db';
         $user = 'root';
-        //ptb15137
-        $pass = '';
-        //butike7haTho
+        $pass = 'root';
         $db = 'people';
-        $conn = mysqli_connect($host,$user,$pass,$db);
+//        $conn = new PDO('mysqli:host=jp_db;dbname=people', $user, $pass);
+
+    $conn = new mysqli('jp_db','root', 'root', 'people');
 
 

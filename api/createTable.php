@@ -4,8 +4,9 @@ require_once 'DB.php';
 
 
 $checktable = "SHOW TABLES LIKE 'people';";
-$query = $conn->query($checktable); 
-if( $query->num_rows > 0){
+$query = $conn->query($checktable);
+print_r($query);
+if( $query->num_rows == 0){
   $sql = 'CREATE TABLE people(
     id INT PRIMARY KEY  AUTO_INCREMENT,
     	name VARCHAR(150),
@@ -16,7 +17,11 @@ if( $query->num_rows > 0){
            comments TEXT,
            responder INT(1));';
     if($conn->query($sql) !== TRUE)
+    {
       $error_create = $conn -> error;
+      echo 'error';
+
+    }
 }
  
 
