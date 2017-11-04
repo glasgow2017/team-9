@@ -20,14 +20,14 @@ class Home extends Component {
         aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <img src={logo} responsive />
+        <img src={logo} className='img-responsive' />
         <Grid>
           <Row>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} className='text-center'>
               <Button bsStyle='info' bsSize='large'>User</Button>
-              <Button bsStyle='warning' bsSize='large'>Responder</Button>
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={6} className='text-center'>
+              <Button bsStyle='warning' bsSize='large'>Responder</Button>
             </Col>
           </Row>
         </Grid>
