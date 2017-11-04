@@ -10,6 +10,7 @@ module.exports = {
        "blocks": "never",
       }],
       "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+      "react/forbid-prop-types": 0,
       "jsx-a11y/href-no-hash": "off",
       "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
     },

@@ -4,7 +4,7 @@ import {
   REMOVE_USER,
 } from '../actions/user';
 
-const initialStore = {};
+const initialStore = null;
 
 export default function reducer(state = initialStore, action) {
   switch (action.type) {
@@ -13,7 +13,7 @@ export default function reducer(state = initialStore, action) {
     case UPDATE_USER:
       return { ...state, ...action.user };
     case REMOVE_USER:
-      return initialStore;
+      return null;
     default:
       return state;
   }

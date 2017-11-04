@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Grid } from 'react-bootstrap';
 
+import NavBar from '../components/NavBar';
 /*
   Entry point of the app
 */
@@ -10,7 +12,11 @@ class About extends Component {
   render() {
     return (
       <div>
-        <h1>About</h1>
+        <NavBar />
+        <Grid>
+          <h1>About us</h1>
+          <p>We are quite cool!</p>
+        </Grid>
       </div>
     );
   }

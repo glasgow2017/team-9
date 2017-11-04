@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import {
-  Grid, Col, Row,
+  Grid, Col,
   FormGroup, Form,
   FormControl, Button,
 } from 'react-bootstrap';
@@ -39,54 +39,54 @@ class Login extends Component {
 
   render() {
     return (
-    <div>
-    <NavBar />
-      <Grid fluid >
-        <Col xs={12} md={8} mdOffset={2}>
-          <Form horizontal>
-            <FormGroup
-              validationState={this.state.emailValidated}
+      <div>
+        <NavBar />
+        <Grid fluid >
+          <Col xs={12} md={8} mdOffset={2}>
+            <Form horizontal>
+              <FormGroup
+                validationState={this.state.emailValidated}
+              >
+                <Col sm={2}>
+                  <strong>Email</strong>
+                </Col>
+                <Col sm={10}>
+                  <FormControl
+                    type="email"
+                    placeholder="Email"
+                    value={this.state.email}
+                    onChange={e => this.setState({ email: e.target.value })}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup controlId="formHorizontalPassword">
+                <Col sm={2}>
+                  <strong>Password</strong>
+                </Col>
+                <Col sm={10}>
+                  <FormControl
+                    type="password"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={e => this.setState({ password: e.target.value })}
+                  />
+                </Col>
+              </FormGroup>
+            </Form>
+          </Col>
+          <Col xsOffset={4} xs={4} mdOffset={5} md={2}>
+            <Button
+              type="submit"
+              disabled={this.state.loading}
+              onClick={() => this._onSubmit()}
+              block
             >
-              <Col sm={2}>
-                Email
-              </Col>
-              <Col sm={10}>
-                <FormControl
-                  type="email"
-                  placeholder="Email"
-                  value={this.state.email}
-                  onChange={e => this.setState({ email: e.target.value })}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup controlId="formHorizontalPassword">
-              <Col sm={2}>
-                Password
-              </Col>
-              <Col sm={10}>
-                <FormControl
-                  type="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={e => this.setState({ password: e.target.value })}
-                />
-              </Col>
-            </FormGroup>
-          </Form>
-        </Col>
-        <Col xsOffset={4} xs={4}>
-          <Button
-            type="submit"
-            disabled={this.state.loading}
-            onClick={() => this._onSubmit()}
-            block
-          >
-            {this.state.loading ? 'Loggin in...' : 'Login'}
-          </Button>
-        </Col>
-      </Grid>
-    <Footer />
-    </div>
+              {this.state.loading ? 'Loggin in...' : 'Login'}
+            </Button>
+          </Col>
+        </Grid>
+        <Footer />
+      </div>
     );
   }
 
