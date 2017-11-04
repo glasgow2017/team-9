@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
+import logo from '../assets/logo.svg';
 
 /*
   NavBar description
@@ -14,7 +15,7 @@ class NavBar extends Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">React-Bootstrap</a>
+              <a href="#">Who Dares Cares</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
