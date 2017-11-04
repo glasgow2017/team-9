@@ -5,18 +5,19 @@ import { connect } from 'react-redux';
   Entry point of the app
 */
 
-class App extends Component {
+class About extends Component {
 
   render() {
     return (
       <div>
-        <h1>XDDDDD</h1>
+        <h1>About</h1>
       </div>
     );
   }
+
 }
 
-App.propTypes = {
+About.propTypes = {
 
 };
 
@@ -32,4 +33,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(About);
