@@ -5,6 +5,8 @@
         $db = 'people';
 //        $conn = new PDO('mysqli:host=jp_db;dbname=people', $user, $pass);
 
-    $conn = new mysqli('jp_db','root', 'root', 'people');
+    $conn = new mysqli('localhost','root', 'root', 'cares_who_dares');
+
+    
 
 

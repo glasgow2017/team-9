@@ -13,37 +13,38 @@ require_once 'DB.php';
 
 use \Firebase\JWT\JWT;
 
+//header('Content-type: application/json');
+
 $request  = json_decode(file_get_contents('php://input'));
 $response = new stdClass();
 $key = "fgdsfdhfdsf90";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['reg']))
 {
-
     $name = $request->name;
     $password  = $request->password;
-    $password  = sha256($password);
+    $password  = hash('sha256', $password);
     $email = $request->email;
-    $gender = $request->gender;
+    $gender= $request->gender;
     $position = $request->position;
     $resp = $request->responsibility;
 
 
-    $sql = "INSERT INTO people ('name', 'gender', 'position','email','password','responder' VALUES ('$name','$gender','$position','$email','$password','$resp'));";
+    $sql = "INSERT INTO people (name, gender, position, email, password, responder) VALUES ('$name','$gender','$position','$email','$password', '$resp')";
 
-     if($conn->query($sql) !== TRUE)
-     {
-         http_send_status(400);
+     if($conn->query($sql) !== TRUE) {
+        http_send_status(400);
         $response->error = "Registration faild";
-     }
-     else
-     {
+     } else {
          $response->success = true;
      }
+
+     echo json_encode($response);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
 {
+    echo "Login";
 
     $email = $request->email;
     $password = $request->password;
@@ -75,6 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
 {
+    echo "Authentication";
+
     $token = $request->token;
 
     $user = (array) JWT::decode($token, $key, array('HS256'));
@@ -95,6 +98,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
         http_send_status(400);
         $response->error = "user not exists";
     }
-}``
-
+}
 echo json_encode($response);
