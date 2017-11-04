@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
-import logo from '../assets/logo.svg';
 
 /*
   NavBar description
