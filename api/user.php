@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['reg']))
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
 {
-    echo "Login";
 
     $email = $request->email;
     $password = $request->password;
@@ -75,16 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
 {
-    echo "Authentication";
 
     $token = $request->token;
 
     $user = (array) JWT::decode($token, $key, array('HS256'));
     $email = $user['email'];
     $password = $user['password'];
-
-    var_dump($user);
-
 
     $sql = "SELECT * FROM people  WHERE email = '$email' AND password = '$password';";
 
