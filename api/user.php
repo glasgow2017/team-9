@@ -95,6 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
         http_send_status(400);
         $response->error = "user not exists";
     }
-}``
+}
 
 echo json_encode($response);
