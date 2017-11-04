@@ -37,10 +37,10 @@ class Home extends Component {
           </Row>
           <Row>
             <Col xs={12} md={6} className='text-center triple-text'>
-              <Button bsStyle='info' bsSize='large' block>User</Button>
+              <Button bsStyle='info' bsSize='large' block href='/login'>User</Button>
             </Col>
             <Col xs={12} md={6} className='text-center triple-text'>
-              <Button bsStyle='warning' bsSize='large' block>Responder</Button>
+              <Button bsStyle='warning' bsSize='large' block href='/login'>Responder</Button>
             </Col>
           </Row>
         </Grid>

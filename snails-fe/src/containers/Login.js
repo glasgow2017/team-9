@@ -7,6 +7,7 @@ import {
 } from 'react-bootstrap';
 
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 // eslint-disable-next-line
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -38,8 +39,9 @@ class Login extends Component {
 
   render() {
     return (
+    <div>
+    <NavBar />
       <Grid fluid >
-        <NavBar />
         <Col xs={12} md={8} mdOffset={2}>
           <Form horizontal>
             <FormGroup
@@ -83,6 +85,8 @@ class Login extends Component {
           </Button>
         </Col>
       </Grid>
+    <Footer />
+    </div>
     );
   }
 
