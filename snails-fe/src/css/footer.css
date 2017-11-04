@@ -17,6 +17,21 @@
 
 .footer .social {
   text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer .social li {
+    background: #00E5FF;
+    padding: 1vh;
+    border-radius: 1vh;
+    height: ;
+}
+
+.footer .social span {
+    color: #101419;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .footer a {

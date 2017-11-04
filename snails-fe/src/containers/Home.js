@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import logo from '../assets/logo.svg';
 import { h1, Button, Grid, Row, Col } from 'react-bootstrap';
+import '../css/home.css';
 
 /*
   Entry point of the app
@@ -35,10 +36,10 @@ class Home extends Component {
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={6} className='text-center'>
+            <Col xs={12} md={6} className='text-center triple-text'>
               <Button bsStyle='info' bsSize='large' block>User</Button>
             </Col>
-            <Col xs={12} md={6} className='text-center'>
+            <Col xs={12} md={6} className='text-center triple-text'>
               <Button bsStyle='warning' bsSize='large' block>Responder</Button>
             </Col>
           </Row>

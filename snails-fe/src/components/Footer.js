@@ -21,15 +21,15 @@ class Footer extends Component {
         </div>
         <div>
           <ul className="social">
-            <li><a href="#"><FontAwesome name='rocket' size='100px' /></a></li>
-            <li><a href="#"><FontAwesome name="twitter" /></a></li>
-            <li><a href="#"><FontAwesome name="reddit" /></a></li>
-            <li><a href="#"><FontAwesome name="flickr" /></a></li>
-            <li><a href="#"><FontAwesome name="tumblr" /></a></li>
+            <li><a href="#"><FontAwesome name='rocket' size='2x' fixedWidth /></a></li>
+            <li><a href="#"><FontAwesome name="twitter" size='2x' fixedWidth /></a></li>
+            <li><a href="#"><FontAwesome name="reddit" size='2x' fixedWidth /></a></li>
+            <li><a href="#"><FontAwesome name="flickr" size='2x' fixedWidth /></a></li>
+            <li><a href="#"><FontAwesome name="tumblr" size='2x' fixedWidth /></a></li>
           </ul>
         </div>
         <div>
-          <ul className="list-unstyled">
+          <ul className="list-unstyled" className='text-right'>
             <li>Address</li>
             <li>Email</li>
           </ul>
