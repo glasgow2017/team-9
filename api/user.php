@@ -15,6 +15,7 @@ use \Firebase\JWT\JWT;
 
 $request  = json_decode(file_get_contents('php://input'));
 $response = new stdClass();
+$key = "fgdsfdhfdsf90";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['reg']))
 {
@@ -48,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
     $password = $request->password;
     $password = sha256($password);
 
-    $sql = "SELECT * people  WHERE email = '$email' AND password = '$password';";
+    $sql = "SELECT * FROM people  WHERE email = '$email' AND password = '$password';";
 
     if ($conn->query($sql) !== TRUE)
         $error_login = $conn->error;
@@ -57,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
 
     if ($num > 0)
     {
-        $key = "fgdsfdhfdsf90";
         $token = array(
             "name" => "$name",
             "password" => "$password",
@@ -72,5 +72,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
     }
 }
 
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
+{
+    $token = $request->token;
+
+    $user = (array) JWT::decode($token, $key, array('HS256'));
+
+    $sql = "SELECT * FROM people  WHERE email = '$email' AND password = '$password';";
+
+    if ($conn->query($sql) !== TRUE)
+        $error_login = $conn->error;
+
+    $num = $conn->query($sql)->num_rows;
+
+    if ($num > 0)
+    {
+        $response->success = true;
+    }
+    else
+    {
+        http_send_status(400);
+        $response->error = "user not exists";
+    }
+}``
 
 echo json_encode($response);
