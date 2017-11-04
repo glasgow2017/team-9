@@ -38,8 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['reg']))
      } else {
          $response->success = true;
      }
-
-     echo json_encode($response);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
@@ -99,4 +97,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
         $response->error = "user not exists";
     }
 }
+
 echo json_encode($response);
