@@ -27,16 +27,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['reg']))
     $email = $request->email;
     $gender= $request->gender;
     $position = $request->position;
-    $resp = $request->responsibility;
-
+    $resp = $request->responsibility *1;
 
     $sql = "INSERT INTO people (name, gender, position, email, password, responder) VALUES ('$name','$gender','$position','$email','$password', '$resp')";
 
-     if($conn->query($sql) !== TRUE) {
-        http_send_status(400);
-        $response->error = "Registration faild";
-     } else {
+
+     if($conn->query($sql)) {
          $response->success = true;
+     } else {
+        //http_send_status(400);
+        $response->error = "Registration faild";
+        var_dump($conn->error);
      }
 }
 
@@ -46,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
 
     $email = $request->email;
     $password = $request->password;
-    $password = sha256($password);
+    $password = hash('sha256', $password);
 
     $sql = "SELECT * FROM people  WHERE email = '$email' AND password = '$password';";
 
@@ -58,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
     if ($num > 0)
     {
         $token = array(
-            "name" => "$name",
+            "email" => "$name",
             "password" => "$password",
         );
 
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
     }
     else
     {
-        http_send_status(400);
+//        http_send_status(400);
         $response->error = "User not exists!";
     }
 }
@@ -79,6 +80,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
     $token = $request->token;
 
     $user = (array) JWT::decode($token, $key, array('HS256'));
+    $email = $user['email'];
+    $password = $user['password'];
+
+    var_dump($user);
+
 
     $sql = "SELECT * FROM people  WHERE email = '$email' AND password = '$password';";
 
@@ -93,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
     }
     else
     {
-        http_send_status(400);
+//        http_send_status(400);
         $response->error = "user not exists";
     }
 }
