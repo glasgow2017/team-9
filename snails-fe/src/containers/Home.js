@@ -12,9 +12,10 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <NavBar />
         <h1>Home</h1>
         <ChatBox />
-        <NavBar />
+
       </div>
     );
   }
