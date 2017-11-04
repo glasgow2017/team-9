@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
     if ($num > 0)
     {
         $token = array(
-            "email" => "$name",
+            "email" => "$email",
             "password" => "$password",
         );
 
