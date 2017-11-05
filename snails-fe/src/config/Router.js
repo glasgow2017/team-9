@@ -11,6 +11,8 @@ import About from '../containers/About';
 import Login from '../containers/Login';
 import Signup from '../containers/Signup';
 import Dashboard from '../containers/Dashboard';
+import UserDashboard from '../containers/UserDashboard';
+import ResponderDashboard from '../containers/ResponderDashboard';
 
 /*
   Entry point of the app
@@ -27,6 +29,8 @@ export default class Router extends Component {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/user-dashboard" component={UserDashboard} />
+          <Route path="/responder-dashboard" component={ResponderDashboard} />
         </Switch>
       </BrowserRouter>
     );

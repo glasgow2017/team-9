@@ -20,19 +20,13 @@ class Home extends Component {
         <Grid>
           <Row>
             <Col xs={12} md={4} className='text-center'>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Who Dares Cares is a non profit charity that has been developed to support people from all walks of life with PTSD. The charity has been set up by two former Scottish soldiers, Calum MacLeod (KOSB) and Colin MacLachlan (22 SAS).</p>
             </Col>
             <Col xs={12} md={4}>
                 <img src={logo} className='img-responsive' />
             </Col>
             <Col xs={12} md={4} className='text-center'>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>You do not have to have served in the military to be struggling or experience a trauma, it can happen to anyone of us at anytime. The charity aims to support people through activity and buddy buddy support systems so that no one should ever feel alone. Our motto "Who Dares Cares" means this....we dare you to care, become active in our charity work,support our activities, take part and raise funds to help our future activities.</p>
             </Col>
           </Row>
           <Row>
