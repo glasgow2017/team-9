@@ -50,12 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
 
     $sql = "SELECT * FROM people  WHERE email = '$email' AND password = '$password';";
 
-    if ($conn->query($sql) !== TRUE)
-        $error_login = $conn->error;
 
-    $num = $conn->query($sql)->num_rows;
+    $queryResult = $conn->query($sql);
 
-    if ($num > 0)
+
+    if ($queryResult->num_rows > 0)
     {
         $token = array(
             "email" => "$email",
@@ -63,6 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
         );
 
         $response->token = JWT::encode($token, $key);
+        $response->user = $queryResult->fetch_object('stdClass');
+
     }
     else
     {
