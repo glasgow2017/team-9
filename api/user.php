@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['reg']))
      if($conn->query($sql)) {
          $response->success = true;
      } else {
-        //http_send_status(400);
+        http_response_code(400);
         $response->error = "Registration faild";
         var_dump($conn->error);
      }
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['login']))
     }
     else
     {
-//        http_send_status(400);
+        http_response_code(400);
         $response->error = "User not exists!";
     }
 }
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
     }
     else
     {
-//        http_send_status(400);
+        http_response_code(400);
         $response->error = "user not exists";
     }
 }
