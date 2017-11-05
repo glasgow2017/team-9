@@ -77,6 +77,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
 {
 
     $token = $request->token;
+    $response = user_auth($token);
+
+}
+
+echo json_encode($response);
+
+
+function user_auth($token)
+{
+    global $conn;
+    global $key;
+
+    $response = new stdClass();
 
     $user = (array) JWT::decode($token, $key, array('HS256'));
     $email = $user['email'];
@@ -84,20 +97,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
 
     $sql = "SELECT * FROM people  WHERE email = '$email' AND password = '$password';";
 
-    if ($conn->query($sql) !== TRUE)
-        $error_login = $conn->error;
+    $queryResult = $conn->query($sql);
 
-    $num = $conn->query($sql)->num_rows;
-
-    if ($num > 0)
+    if ($queryResult->num_rows > 0)
     {
         $response->success = true;
+        $response->user    = $queryResult->fetch_object('stdClass');
     }
     else
     {
         http_response_code(400);
         $response->error = "user not exists";
     }
-}
 
-echo json_encode($response);
+    return $response;
+}

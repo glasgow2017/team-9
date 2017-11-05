@@ -16,7 +16,7 @@ class Footer extends Component {
           <ul className="list-unstyled">
             <li><a href="#">About</a></li>
             <li><a href="#">Terms and Conditions</a></li>
-            <li><a href="#">Copyright blah blah blah</a></li>
+            <li>Copyright text and other fun things</li>
           </ul>
         </div>
         <div>
@@ -30,7 +30,7 @@ class Footer extends Component {
         </div>
         <div>
           <ul className="list-unstyled" className='text-right'>
-            <li>2 Taylor Place, Glasgow 12354</li>
+            <li>123 Fancy Street, Glasgow 12354</li>
             <li>admin@supportthepeople.com</li>
           </ul>
         </div>

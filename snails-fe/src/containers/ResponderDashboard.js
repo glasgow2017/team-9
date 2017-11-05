@@ -20,7 +20,6 @@ class ResponserDashboard extends Component {
 
 ResponserDashboard.propTypes = {
   user: PropTypes.any.isRequired,
-  location: PropTypes.any.isRequired,
 };
 
 const mapStateToProps = (state) => {

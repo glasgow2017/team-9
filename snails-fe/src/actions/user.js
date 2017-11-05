@@ -1,4 +1,5 @@
 import { API_HOST } from '../config/settings';
+import * as token from './token';
 
 export const ADD_USER = 'ADD_USER';
 export function add(user) {
@@ -38,15 +39,16 @@ export function login(email, password) {
         console.log(response);
         if (!response.ok) {
           errorFlag = true;
-          return response.json();
         }
-        return true;
+        return response.json();
       })
       .then((json) => {
-        console.log(json);
         if (errorFlag) {
           throw new Error(json.error);
         }
+        dispatch(token.receive(json.token));
+        console.log(token.getToken());
+        dispatch(add(json.user));
         return true;
       });
   };
@@ -75,5 +77,12 @@ export function signUp(form) {
         }
         return true;
       });
+  };
+}
+
+export function logout() {
+  return (dispatch) => {
+    dispatch(remove());
+    dispatch(token.remove());
   };
 }

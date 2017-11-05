@@ -8,6 +8,8 @@
 require 'vendor/autoload.php';
 //require dirname(__DIR__) . '/vendor/autoload.php';
 
+require_once 'user.php';
+
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Ratchet\Http\HttpServer;
@@ -18,26 +20,72 @@ class Chat implements MessageComponentInterface
 {
 
     protected $clients;
+    protected $authClients;
 
     public function __construct()
     {
         $this->clients = new \SplObjectStorage;
+        $this->authClients = new \SplObjectStorage;
     }
 
     public function onOpen(ConnectionInterface $conn)
     {
-
-        echo 'incoming\n';
         $this->clients->attach($conn);
     }
 
-    public function onMessage(ConnectionInterface $from, $msg) {
+    public function onMessage(ConnectionInterface $from, $msg)
+    {
 
-        echo $msg;
+        $msg = json_decode($msg);
+	var_dump($msg);
+        if ($msg->auth == 'auth')
+        {
+           $result = user_auth($msg->token);
 
-        foreach ($this->clients as $client) {
-                $client->send($msg);
+           if (property_exists($result, 'success'))
+           {
+               $from->userData = $result->user;
+               $this->authClients->attach($from);
+
+               if ($from->userData->responder == 0)
+               {
+                   $response = new stdClass();
+                   $response->targetId = null;
+                   do
+                   {
+                       foreach ($this->authClients as $client)
+                           if (!property_exists($client, 'tokenId') && $client->userData->responder == 1)
+                           {
+                               $client->targetId = $from->userData->id;
+                               $from->targetId = $client->userData->id;
+
+                               $response->targetId = $client->userData->id;
+                           }
+
+                       if ($response->targetId == null)
+                           sleep(5);
+
+                   }while($response->targetId == null);
+
+                   $from->send(json_encode($response));
+               }
+
+           }
         }
+        else
+        {
+            foreach ($this->authClients as $client)
+                if($client->userData->id == $msg->targetId)
+                {
+                    $response = new stdClass();
+                    $response->message = $msg->message;
+		    $response->targetId = $client->targetId;
+		     
+
+                    $client->send(json_encode($response));
+                }
+        }
+
     }
 
     public function onClose(ConnectionInterface $conn) {
@@ -56,7 +104,7 @@ $server = IoServer::factory(
             new Chat()
         )
     ),
-    8080
+    8088
 );
 
 $server->run();
