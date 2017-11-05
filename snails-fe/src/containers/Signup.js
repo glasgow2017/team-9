@@ -132,11 +132,12 @@ class Signup extends Component {
               </FormGroup>
             </Form>
           </Col>
-          <Col xsOffset={4} xs={4} mdOffset={4} md={4}>
+          <Col xsOffset={4} xs={4} mdOffset={6} md={4}>
             <Button
               type="submit"
               disabled={this.state.loading}
               onClick={() => this._onSubmit()}
+              bsSize='large'
               block
             >
               {this.state.loading ? 'Signing up...' : 'Sing up!'}

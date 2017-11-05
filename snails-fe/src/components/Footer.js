@@ -15,8 +15,8 @@ class Footer extends Component {
         <div>
           <ul className="list-unstyled">
             <li><a href="#">About</a></li>
-            <li><a href="#">Terms and Conditions</a></li>
-            <li><a href="#">Copyright blah blah blah</a></li>
+            <li><a href="#">Terms and Conditions</a></li><br />
+            <li>Copyright stuff and fancy text</li>
           </ul>
         </div>
         <div>
