@@ -1,5 +1,6 @@
 .triple-text .btn {
     font-size: 3em !important;
+    margin-bottom: 10px;
 }
 
 p {
@@ -14,6 +15,14 @@ background: linear-gradient(135deg, #99bec9 0%,#29b8e5 50%,#91aeb7 100%); /* W3C
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99bec9', endColorstr='#91aeb7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     border: none;
     box-shadow: 1px 1px 5px 1px #bababa;
+}
+
+.btn-info:hover, .btn-warning:hover {
+    background-position: unset;
+}
+
+.btn-info:active, .btn-warning:active {
+    background-color: #fff !important;
 }
 
 .btn-warning {

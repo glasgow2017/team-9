@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Grid, Row, Col, Panel, Image, ListGroup, ListGroupItem, Nav, NavItem } from 'react-bootstrap';
+
+import DashboardNav from '../components/DashboardNav';
+import Footer from '../components/Footer';
+import ChatBox from '../components/ChatBox';
+import "../css/light.css";
+
 
 /*
   UserDashboard description
@@ -10,8 +17,26 @@ class UserDashboard extends Component {
 
   render() {
     return (
-      <div>
-        <p>UserDashboard screen</p>
+      <div className="dashboard-root">
+        <DashboardNav />
+        <Grid>
+          <Row>
+            <Col xsHidden md={3}>
+              <Panel>
+                <Image src="https://projects.scpr.org/static-files/_v4/images/default_avatar.png" rounded responsive />
+                <br />
+                <ListGroup>
+                  <ListGroupItem>{this.props.user.name}</ListGroupItem>
+                  <ListGroupItem>{this.props.user.email}</ListGroupItem>
+                </ListGroup>
+              </Panel>
+            </Col>
+            <Col xs={12} md={9}>
+              <ChatBox />
+            </Col>
+          </Row>
+        </Grid>
+        <Footer />
       </div>
     );
   }
@@ -19,13 +44,13 @@ class UserDashboard extends Component {
 }
 
 UserDashboard.propTypes = {
-  user: PropTypes.any.isRequired,
-  location: PropTypes.any.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    token: state.token
   };
 };
 

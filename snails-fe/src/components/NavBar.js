@@ -14,14 +14,14 @@ class NavBar extends Component {
     return (
       <div>
         <Navbar inverse collapseOnSelect>
-          <LinkContainer to="/">
-            <Navbar.Header>
+          <Navbar.Header>
+            <LinkContainer to="/">
               <Navbar.Brand>
                 Who Dares Cares
               </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
-          </LinkContainer>
+            </LinkContainer>
+            <Navbar.Toggle />
+          </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
               <LinkContainer to="/about">
