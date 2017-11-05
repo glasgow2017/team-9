@@ -1,7 +1,7 @@
 <?php
-        $host = 'jp_db';
+        $host = 'localhost';
         $user = 'root';
-        $pass = 'root';
+        $pass = '';
         $db = 'people';
 //        $conn = new PDO('mysqli:host=jp_db;dbname=people', $user, $pass);
 
