@@ -1,0 +1,15 @@
+.btn-default {
+    background: #f6b092; /* Old browsers */
+background: -moz-linear-gradient(-45deg, #f6b092 0%, #c6f9ff 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, #f6b092 0%,#c6f9ff 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, #f6b092 0%,#c6f9ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6b092', endColorstr='#c6f9ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.btn-default:hover {
+    background-position: unset;
+}
+
+.btn-default:active {
+    background-color: #fff !important;
+}
