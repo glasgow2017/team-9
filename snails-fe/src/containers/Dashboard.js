@@ -13,7 +13,6 @@ import ResponderDashboard from './ResponderDashboard';
 class Dashboard extends Component {
 
   render() {
-    console.log(this.props);
     if (!this.props.user) {
       return (
         <Redirect to="/login" />

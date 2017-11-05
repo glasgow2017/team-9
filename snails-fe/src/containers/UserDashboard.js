@@ -19,8 +19,7 @@ class UserDashboard extends Component {
 }
 
 UserDashboard.propTypes = {
-  user: PropTypes.any.isRequired,
-  location: PropTypes.any.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
