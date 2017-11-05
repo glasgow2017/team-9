@@ -47,6 +47,7 @@ export function login(email, password) {
           throw new Error(json.error);
         }
         dispatch(token.receive(json.token));
+        console.log(token.getToken());
         dispatch(add(json.user));
         return true;
       });

@@ -24,6 +24,7 @@ import ResponderDashboard from '../containers/ResponderDashboard';
 class Router extends Component {
 
   render() {
+    console.log(this.props.token);
     return (
       <BrowserRouter>
         <Switch>
@@ -65,6 +66,7 @@ Router.propTypes = {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    token: state.token
   };
 };
 

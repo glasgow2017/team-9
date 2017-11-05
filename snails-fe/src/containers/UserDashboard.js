@@ -32,9 +32,7 @@ class UserDashboard extends Component {
               </Panel>
             </Col>
             <Col xs={12} md={9}>
-              <div className="circle red" />
-              <div className="circle yellow" />
-              <div className="circle green" />
+              <ChatBox />
             </Col>
           </Row>
         </Grid>
@@ -52,6 +50,7 @@ UserDashboard.propTypes = {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    token: state.token
   };
 };
 
