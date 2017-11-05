@@ -24,7 +24,7 @@ class Dashboard extends Component {
       );
     }
     return (
-      <ResponderDashboard />
+      <UserDashboard />
     );
   }
 
