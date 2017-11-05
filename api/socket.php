@@ -37,6 +37,7 @@ class Chat implements MessageComponentInterface
     {
 
         $msg = json_decode($msg);
+	var_dump($msg);
         if ($msg->auth == 'auth')
         {
            $result = user_auth($msg->token);
@@ -50,14 +51,13 @@ class Chat implements MessageComponentInterface
                {
                    $response = new stdClass();
                    $response->targetId = null;
-
                    do
                    {
                        foreach ($this->authClients as $client)
                            if (!property_exists($client, 'tokenId') && $client->userData->responder == 1)
                            {
-                               $client->tokenId = $from->userData->id;
-                               $from->tokenId = $client->userData->id;
+                               $client->targetId = $from->userData->id;
+                               $from->targetId = $client->userData->id;
 
                                $response->targetId = $client->userData->id;
                            }
@@ -79,6 +79,8 @@ class Chat implements MessageComponentInterface
                 {
                     $response = new stdClass();
                     $response->message = $msg->message;
+		    $response->targetId = $client->targetId;
+		     
 
                     $client->send(json_encode($response));
                 }
