@@ -1,0 +1,12 @@
+nav {
+    border-radius: 0 !important;
+}
+
+
+.navbar-brand{
+    font-size: 1.7em;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    collor: #d8d8d8;
+}

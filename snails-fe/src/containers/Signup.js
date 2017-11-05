@@ -8,7 +8,7 @@ import {
 } from 'react-bootstrap';
 
 import NavBar from '../components/NavBar';
-
+import Footer from '../components/Footer';
 // eslint-disable-next-line
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -90,6 +90,7 @@ class Signup extends Component {
             </Button>
           </Col>
         </Grid>
+<Footer />
       </div>
     );
   }

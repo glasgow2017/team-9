@@ -30,8 +30,8 @@ class Footer extends Component {
         </div>
         <div>
           <ul className="list-unstyled" className='text-right'>
-            <li>Address</li>
-            <li>Email</li>
+            <li>2 Taylor Place, Glasgow 12354</li>
+            <li>admin@supportthepeople.com</li>
           </ul>
         </div>
       </div>
