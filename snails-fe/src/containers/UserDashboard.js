@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import '../css/sidebar.css';
 import { Grid, Row, Col, Panel, Image, ListGroup, ListGroupItem } from 'react-bootstrap';
 import ChatBox from '../components/ChatBox';
 
@@ -16,20 +15,17 @@ class UserDashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="dashboard-root">
         <NavBar />
         <Grid>
           <Row>
             <Col xsHidden md={3}>
               <Panel>
-                <Image src='https://projects.scpr.org/static-files/_v4/images/default_avatar.png' rounded responsive />
+                <Image src="https://projects.scpr.org/static-files/_v4/images/default_avatar.png" rounded responsive />
                 <br />
                 <ListGroup>
-                  <ListGroupItem>Name</ListGroupItem>
-                  <ListGroupItem>Gender</ListGroupItem>
-                  <ListGroupItem>name@email.com</ListGroupItem>
-                  <ListGroupItem>Position</ListGroupItem>
-                  <ListGroupItem href="#link2"><u>Settings</u></ListGroupItem>
+                  <ListGroupItem>{this.props.user.name}</ListGroupItem>
+                  <ListGroupItem>{this.props.user.email}</ListGroupItem>
                 </ListGroup>
               </Panel>
             </Col>
