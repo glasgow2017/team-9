@@ -45,21 +45,43 @@ class Chat implements MessageComponentInterface
            {
                $from->userData = $result->user;
                $this->authClients->attach($from);
-               var_dump($this->authClients->count());
+
+               if ($from->userData->responder == 0)
+               {
+                   $response = new stdClass();
+                   $response->targetId = null;
+
+                   do
+                   {
+                       foreach ($this->authClients as $client)
+                           if (!property_exists($client, 'tokenId') && $client->userData->responder == 1)
+                           {
+                               $client->tokenId = $from->userData->id;
+                               $from->tokenId = $client->userData->id;
+
+                               $response->targetId = $client->userData->id;
+                           }
+
+                       if ($response->targetId == null)
+                           sleep(5);
+
+                   }while($response->targetId == null);
+
+                   $from->send(json_encode($response));
+               }
+
            }
         }
         else
         {
-            var_dump("happend");
-            $result = user_auth($msg->token);
-            if (property_exists($result, 'success'))
-                foreach ($this->clients as $client)
+            foreach ($this->authClients as $client)
+                if($client->userData->id == $msg->targetId)
                 {
-                    if($client->userData->id == $msg->targetId)
-                        $client->send($msg->message);
+                    $response = new stdClass();
+                    $response->message = $msg->message;
 
+                    $client->send(json_encode($response));
                 }
-
         }
 
     }
