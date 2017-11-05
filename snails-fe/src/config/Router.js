@@ -39,11 +39,18 @@ class Router extends Component {
             )}
           />
           <Route path="/about" component={About} />
-          <Route path="/login" component={Login} />
+          <Route
+            path="/login"
+            render={() => (
+              this.props.user ? (
+                <Redirect to="/dashboard" />
+              ) : (
+                <Login />
+              )
+            )}
+          />
           <Route path="/signup" component={Signup} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/user-dashboard" component={UserDashboard} />
-          <Route path="/responder-dashboard" component={ResponderDashboard} />
         </Switch>
       </BrowserRouter>
     );
