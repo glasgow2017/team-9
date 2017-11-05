@@ -1,22 +1,29 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Grid } from 'react-bootstrap';
 
+import NavBar from '../components/NavBar';
 /*
   Entry point of the app
 */
 
-class App extends Component {
+class About extends Component {
 
   render() {
     return (
       <div>
-        <h1>XDDDDD</h1>
+        <NavBar />
+        <Grid>
+          <h1>About us</h1>
+          <p>We are quite cool!</p>
+        </Grid>
       </div>
     );
   }
+
 }
 
-App.propTypes = {
+About.propTypes = {
 
 };
 
@@ -32,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(About);
