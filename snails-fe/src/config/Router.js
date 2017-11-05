@@ -3,7 +3,10 @@ import {
   BrowserRouter,
   Route,
   Switch,
+  Redirect,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 // Screens:
 import Home from '../containers/Home';
@@ -18,13 +21,23 @@ import ResponderDashboard from '../containers/ResponderDashboard';
   Entry point of the app
 */
 
-export default class Router extends Component {
+class Router extends Component {
 
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              this.props.user ? (
+                <Redirect to="/dashboard" />
+              ) : (
+                <Home />
+              )
+            )}
+          />
           <Route path="/about" component={About} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
@@ -39,5 +52,19 @@ export default class Router extends Component {
 }
 
 Router.propTypes = {
-
+  user: PropTypes.object,
 };
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Router);

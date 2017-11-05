@@ -46,12 +46,10 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-
 };
 
 const mapStateToProps = (state) => {
   return {
-
   };
 };
 
