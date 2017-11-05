@@ -84,14 +84,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['auth']))
 
     $sql = "SELECT * FROM people  WHERE email = '$email' AND password = '$password';";
 
-    if ($conn->query($sql) !== TRUE)
-        $error_login = $conn->error;
+    $queryResult = $conn->query($sql);
 
-    $num = $conn->query($sql)->num_rows;
-
-    if ($num > 0)
+    if ($queryResult->num_rows > 0)
     {
         $response->success = true;
+        $response->user    = $queryResult->fetch_object('stdClass');
     }
     else
     {
