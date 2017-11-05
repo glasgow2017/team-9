@@ -68,6 +68,7 @@ public class WebActivity extends AppCompatActivity {
         // Set up the user interaction to manually show or hide the system UI.
 
         this.webView = findViewById(R.id.webview);
+        this.webView.getSettings().setJavaScriptEnabled(true);
         this.webView.loadUrl("http://34.241.64.98");
 
         // Upon interacting with UI controls, delay any scheduled hide()
