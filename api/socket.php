@@ -57,7 +57,7 @@ class Chat implements MessageComponentInterface
                            {
                                $client->newTargetId = $from->userData->id;
                                $from->newTargetId = $client->userData->id;
-                               $response->newTargetId = $client->userData->id;
+                               $response->newTargetId = $from->userData->id;
                                 $client->send(json_encode($response));
 
                                $response->newTargetId = $client->userData->id;
