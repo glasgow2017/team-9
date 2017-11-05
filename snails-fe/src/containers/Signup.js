@@ -9,6 +9,7 @@ import {
 } from 'react-bootstrap';
 
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 import * as user from '../actions/user';
 
@@ -136,6 +137,7 @@ class Signup extends Component {
             </Button>
           </Col>
         </Grid>
+<Footer />
       </div>
     );
   }

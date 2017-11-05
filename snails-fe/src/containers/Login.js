@@ -8,6 +8,8 @@ import {
 } from 'react-bootstrap';
 
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+
 import * as user from '../actions/user';
 
 // eslint-disable-next-line
@@ -95,6 +97,7 @@ class Login extends Component {
             </Button>
           </Col>
         </Grid>
+        <Footer />
       </div>
     );
   }
