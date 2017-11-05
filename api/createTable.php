@@ -12,7 +12,7 @@ if( $query->num_rows == 0){
         gender VARCHAR(100),
         position VARCHAR(200),
            email VARCHAR(100),
-           password BINARY(65),
+           password VARCHAR(100),
            comments TEXT,
            responder INT(1));';
     if($conn->query($sql) !== TRUE)
