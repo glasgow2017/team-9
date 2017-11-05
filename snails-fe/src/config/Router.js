@@ -16,7 +16,6 @@ import Signup from '../containers/Signup';
 import Dashboard from '../containers/Dashboard';
 import UserDashboard from '../containers/UserDashboard';
 import ResponderDashboard from '../containers/ResponderDashboard';
-
 /*
   Entry point of the app
 */

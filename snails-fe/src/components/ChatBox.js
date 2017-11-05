@@ -30,18 +30,15 @@ class ChatBox extends Component {
     {
        let incoming  = JSON.parse(event.data);
 
-       if ('targetId' in incoming)
+       if ('newTargetId' in incoming)
        {
-         this.state.userId = incoming.targetId;
-
-         let firstMessage = {targetId: this.state.userId, message: 'hey b0ss'};
-         this.state.connection.send(JSON.stringify(firstMessage));
+         this.state.userId = incoming.newTargetId;
        }
 
        if ('message' in incoming)
        {
          let tempMsg = this.state.messages;
-         tempMsg.push('Me: ' + incoming.message);
+         tempMsg.push('Responder: ' + incoming.message);
 
          this.setState({ messages: tempMsg});
        }
@@ -55,7 +52,7 @@ class ChatBox extends Component {
 
   }
 
-  sendMessage = () =>{
+  sendMessage = () => {
     let tempMsg = this.state.messages;
     tempMsg.push('You: ' + this.state.mess);
 
@@ -81,7 +78,10 @@ class ChatBox extends Component {
            value={this.state.mess}
            onChange={e => this.setState({ mess: e.target.value })}
          />
-       <div><Button style={{float: 'right',}} onClick={() => this.sendMessage() }>Send</Button></div>
+       <div>
+         <Button style={{float: 'right',}} onClick={() => this.sendMessage() }>Send</Button>
+
+        </div>
 
       </div>
     );

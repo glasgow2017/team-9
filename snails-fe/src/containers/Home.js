@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import logo from '../assets/logo.svg';
@@ -31,10 +32,14 @@ class Home extends Component {
           </Row>
           <Row>
             <Col xs={12} md={6} className='text-center triple-text'>
-          <Button bsStyle='info' bsSize='large' block href='/login'>User</Button>
+              <Link to="/login">
+                <Button bsStyle='info' bsSize='large' block href='/login'>User</Button>
+              </Link>
             </Col>
             <Col xs={12} md={6} className='text-center triple-text'>
-              <Button bsStyle='warning' bsSize='large' block href='/login'>Responder</Button>
+              <Link to="/login">
+                <Button bsStyle='warning' bsSize='large' block href='/login'>Responder</Button>
+              </Link>
             </Col>
           </Row>
         </Grid>
