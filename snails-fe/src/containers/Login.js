@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  Grid, Col,
+  Grid, Col, Row,
   FormGroup, Form,
   FormControl, Button,
 } from 'react-bootstrap';
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-
 import * as user from '../actions/user';
+import '../css/login.css';
+
 
 // eslint-disable-next-line
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -54,6 +55,12 @@ class Login extends Component {
       <div>
         <NavBar />
         <Grid fluid >
+        <Row>
+          <Col xs={12} md={8} mdOffset={2}> 
+            <h1>Login</h1>
+            <p>Sega e dva chasa. Nie sme zaedno v otbor i rabotim po blagotvoritelen proekt. bla bla bla blah. neprotivokonstitucionstvuvatelstvuvaite nejneobhospodarovavatitelnejsimu. Не искам да бъда тук Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </Col>
+        </Row>
           <Col xs={12} md={8} mdOffset={2}>
             <Form horizontal>
               <FormGroup
