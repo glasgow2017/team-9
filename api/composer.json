@@ -1,5 +1,6 @@
 {
   "require": {
-    "cboden/ratchet": "*"
+    "cboden/ratchet": "*",
+    "firebase/php-jwt": "*"
   }
 }
