@@ -25,9 +25,9 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Adam Smith',
-      email: 'adam.smith@example.com',
-      password: 'qwerty',
+      name: '',
+      email: '',
+      password: '',
       nameValidated: null,
       emailValidated: null,
       passwordValidated: null,
