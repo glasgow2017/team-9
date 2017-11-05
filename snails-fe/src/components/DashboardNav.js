@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../css/navbar.css';
+import { logout } from '../actions/user';
 
 /*
   DashboardNav description
@@ -23,17 +24,14 @@ class DashboardNav extends Component {
             </Navbar.Header>
           </LinkContainer>
           <Navbar.Collapse>
-            <Nav>
-              <LinkContainer to="/about">
-                <NavItem eventKey={1}>About us</NavItem>
-              </LinkContainer>
-            </Nav>
             <Nav pullRight>
               <LinkContainer to="/login">
-                <NavItem eventKey={1}>Login</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/signup">
-                <NavItem eventKey={1}>Sign Up</NavItem>
+                <NavItem
+                  eventKey={1}
+                  onClick={() => this.props.logout()}
+                >
+                  Logout
+                </NavItem>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
@@ -55,7 +53,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    logout: () => dispatch(logout()),
   };
 };
 

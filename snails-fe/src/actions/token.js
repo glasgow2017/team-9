@@ -5,3 +5,10 @@ export function receive(token) {
     token,
   };
 }
+
+export const REMOVE_TOKEN = 'REMOVE_TOKEN';
+export function remove() {
+  return {
+    type: REMOVE_TOKEN,
+  };
+}

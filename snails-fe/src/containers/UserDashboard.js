@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
-<<<<<<< HEAD
-import { Grid, Row, Col, Panel, Image, ListGroup, ListGroupItem } from 'react-bootstrap';
-=======
 import { Grid, Row, Col, Panel, Image, ListGroup, ListGroupItem, Nav, NavItem } from 'react-bootstrap';
->>>>>>> origin/front-end
+
+import DashboardNav from '../components/DashboardNav';
+import Footer from '../components/Footer';
 import ChatBox from '../components/ChatBox';
 
 
@@ -20,15 +17,8 @@ class UserDashboard extends Component {
   render() {
     return (
       <div className="dashboard-root">
-        <NavBar />
+        <DashboardNav />
         <Grid>
-          <Row>
-            <Nav bsStyle="pills" activeKey={1}>
-              <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-              <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-              <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
-            </Nav>
-          </Row>
           <Row>
             <Col xsHidden md={3}>
               <Panel>

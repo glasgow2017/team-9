@@ -78,3 +78,10 @@ export function signUp(form) {
       });
   };
 }
+
+export function logout() {
+  return (dispatch) => {
+    dispatch(remove());
+    dispatch(token.remove());
+  };
+}
