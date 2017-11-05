@@ -6,6 +6,7 @@ import { Grid, Row, Col, Panel, Image, ListGroup, ListGroupItem, Nav, NavItem } 
 import DashboardNav from '../components/DashboardNav';
 import Footer from '../components/Footer';
 import ChatBox from '../components/ChatBox';
+import "../css/light.css";
 
 
 /*
@@ -30,8 +31,10 @@ class UserDashboard extends Component {
                 </ListGroup>
               </Panel>
             </Col>
-            <Col>
-              <ChatBox />
+            <Col xs={12} md={9}>
+              <div className="circle red" />
+              <div className="circle yellow" />
+              <div className="circle green" />
             </Col>
           </Row>
         </Grid>
