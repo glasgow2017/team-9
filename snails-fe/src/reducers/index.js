@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 // individual reducers imports
-import userReducer from './user';
-import tokenReducer from './token';
+import user from './user';
+import token from './token';
 
 const AppReducer = combineReducers({
-  userReducer,
-  tokenReducer,
+  user,
+  token,
 });
 
 export default AppReducer;

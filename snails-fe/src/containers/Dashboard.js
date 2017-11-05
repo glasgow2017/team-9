@@ -19,7 +19,7 @@ class Dashboard extends Component {
         <Redirect to="/login" />
       );
     }
-    if (this.props.user.type === 'User') {
+    if (this.props.user.responder === '0') {
       return (
         <UserDashboard />
       );
