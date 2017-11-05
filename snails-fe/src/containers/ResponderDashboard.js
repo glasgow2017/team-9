@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 /*
-  UserDashboard description
+  ResponserDashboard description
 */
 
-class UserDashboard extends Component {
+class ResponserDashboard extends Component {
 
   render() {
     return (
       <div>
-        <p>UserDashboard screen</p>
+        <p>ResponserDashboard screen</p>
       </div>
     );
   }
 
 }
 
-UserDashboard.propTypes = {
+ResponserDashboard.propTypes = {
   user: PropTypes.any.isRequired,
   location: PropTypes.any.isRequired,
 };
@@ -35,4 +35,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserDashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(ResponserDashboard);

@@ -1,14 +1,18 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   Grid, Col,
   FormGroup, Form,
   FormControl, Button,
-  ControlLabel,
+  ControlLabel, Alert,
 } from 'react-bootstrap';
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+
+import * as user from '../actions/user';
+
 // eslint-disable-next-line
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -21,26 +25,63 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      password: '',
+      name: 'Adam Smith',
+      email: 'adam.smith@example.com',
+      password: 'qwerty',
+      nameValidated: null,
       emailValidated: null,
       passwordValidated: null,
       loading: false,
+      error: false,
     };
   }
 
-  _onSubmit = () => {
-    if (!emailRegEx.test(this.state.email)) {
-      this.setState({ emailValidated: 'error' });
-    }
-    if (this.state.password.length > 6) {
-      this.setState({ passwordValidated: 'error' });
-    }
-    if (this.state.emailValidated && this.state.passwordValidated) {
+  _onSubmit = async () => {
+    if (this.state.name.length < 1) {
+      this.setState({ nameValidated: 'error' });
+      this.setState({ error: 'Name is required' });
       return;
     }
-    console.log(this.state)
+    this.setState({ nameValidated: null });
+    if (!emailRegEx.test(this.state.email)) {
+      this.setState({ emailValidated: 'error' });
+      this.setState({ error: 'E-mail address not valid' });
+      return;
+    }
+    this.setState({ emailValidated: null });
+    if (this.state.password.length < 6) {
+      this.setState({ passwordValidated: 'error' });
+      this.setState({ error: 'Password has to be at least 6 characters long' });
+      return;
+    }
+    this.setState({ passwordValidated: null });
+    this.setState({ error: false });
+    this.setState({ loading: true });
+    try {
+      const form = {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+      };
+      await this.props.signUp(form);
+    } catch (err) {
+      console.log(err);
+      this.setState({ error: err.message });
+      this.setState({ loading: false });
+      return;
+    }
+
+    setTimeout(async () => {
+      try {
+        await this.props.login(this.state.email, this.state.password);
+        this.props.history.push('/dashboard');
+        return;
+      } catch (e) {
+        console.log(e);
+        this.props.history.push('/login');
+        this.setState({ loading: false });
+      }
+    }, 1000);
   }
 
   render() {
@@ -49,8 +90,14 @@ class Signup extends Component {
         <NavBar />
         <Grid fluid >
           <Col xs={12} md={8} mdOffset={2}>
+            {this.state.error &&
+              <Alert bsStyle="danger">
+                <strong>Holy guacamole! </strong>
+                {this.state.error}
+              </Alert>
+            }
             <Form horizontal>
-              <FormGroup>
+              <FormGroup validationState={this.state.nameValidated}>
                 <ControlLabel>Name</ControlLabel>
                 <FormControl
                   type="text"
@@ -94,21 +141,23 @@ class Signup extends Component {
       </div>
     );
   }
+
 }
 
 Signup.propTypes = {
-
+  history: PropTypes.object.isRequired,
+  signUp: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-
-  };
+const mapStateToProps = () => {
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    signUp: form => dispatch(user.signUp(form)),
+    login: (email, password) => dispatch(user.login(email, password)),
   };
 };
 
