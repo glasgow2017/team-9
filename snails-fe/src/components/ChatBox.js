@@ -33,9 +33,6 @@ class ChatBox extends Component {
        if ('targetId' in incoming)
        {
          this.state.userId = incoming.targetId;
-
-         let firstMessage = {targetId: this.state.userId, message: 'hey b0ss'};
-         this.state.connection.send(JSON.stringify(firstMessage));
        }
 
        if ('message' in incoming)
