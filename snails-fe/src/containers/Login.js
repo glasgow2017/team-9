@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   Grid, Col,
@@ -8,6 +9,8 @@ import {
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import * as user from '../actions/user';
+
 
 // eslint-disable-next-line
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -28,13 +31,22 @@ class Login extends Component {
     };
   }
 
-  _onSubmit = () => {
+  _onSubmit = async () => {
     // TODO: finish req
     if (!emailRegEx.test(this.state.email)) {
       this.setState({ emailValidated: 'error' });
       return;
     }
-    console.log(this.state);
+
+    try {
+      await this.props.login(this.state.email, this.state.password);
+      this.props.history.push('/dashboard');
+      return;
+    } catch (e) {
+      console.log(e);
+      this.props.history.push('/login');
+      this.setState({ loading: false });
+    }
   }
 
   render() {
@@ -93,7 +105,8 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-
+  history: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -104,7 +117,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    login: (email, password) => dispatch(user.login(email, password)),
   };
 };
 
